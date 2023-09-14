@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {UserType} from "../../../globalVars.ts";
+import {allMessages, UserType} from "../../../globalVars.ts";
 import {Message} from "./Message/Message.tsx";
 
 type PropsType = {
@@ -7,17 +7,18 @@ type PropsType = {
 }
 
 export const Chat = ({user}: PropsType) => {
+
+  const messages = allMessages[user.id] || []
+
   return (
     <ChatWrapper>
       <ChatHeader>
         {user.name}
       </ChatHeader>
       <ChatBody>
-        <Message user={user} me/>
-        <Message user={user}/>
-        <Message user={user}/>
-        <Message user={user} me/>
-        <Message user={user}/>
+        {
+          messages.map(m => <Message key={m.id} id={m.id} user={user} me={m.me} text={m.text} time={m.time}/>)
+        }
       </ChatBody>
       <ChatInputWrapper>
         <textarea></textarea>
