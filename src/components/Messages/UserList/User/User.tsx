@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {switches, UserType} from "../../../../globalVars.ts";
+import {NavLink} from "react-router-dom";
 
 type PropsType = {
   user: UserType
@@ -12,14 +13,14 @@ export const User = ({user, setSelectedUserId}: PropsType) => {
   }
 
   return (
-    <UserWrapper onClick={selectUserHandler}>
+    <UserWrapper onClick={selectUserHandler} to={`/messages/${user.id}`}>
       {switches.messagesUserWithAvatar && <Avatar src={user.avatar} alt=""/>}
       <h3>{user.name}</h3>
     </UserWrapper>
   );
 };
 
-const UserWrapper = styled.div`
+const UserWrapper = styled(NavLink)`
   display: flex;
   gap: 1.5rem;
   width: 100%;
@@ -29,6 +30,8 @@ const UserWrapper = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   transition-duration: 0.1s;
+  text-decoration: none;
+  color: ${p => p.theme.text};
 
   &:hover {
     background-color: ${p => p.theme.background};
