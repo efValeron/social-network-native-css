@@ -14,7 +14,7 @@ export const App = () => {
         <Routes>
           <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
           <Route path={'/profile'} element={<Profile/>}/>
-          <Route path={'/messages'} element={<Messages/>}/>
+          <Route path={'/messages/:userId'} element={<Messages/>}/>
         </Routes>
       </ContentWrapper>
     </AppWrapper>
