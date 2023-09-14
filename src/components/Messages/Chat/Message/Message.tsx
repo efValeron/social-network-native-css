@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import {UserType} from "../../../../globalVars.ts";
+import {MessagesType, UserType} from "../../../../globalVars.ts";
 
-type PropsType = {
+type PropsType = MessagesType & {
   user: UserType
-  me?: boolean
 }
 
-export const Message = ({user, me = false}: PropsType) => {
+export const Message = ({user, me = false, text, time}: PropsType) => {
   return (
     <MessageWrapper me={me}>
       <Avatar
@@ -15,7 +14,8 @@ export const Message = ({user, me = false}: PropsType) => {
       />
       <Text me={me}>
         <h3>{user.name}</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis nemo numquam quas.</p>
+        <p>{text}</p>
+        <h6>{time}</h6>
       </Text>
     </MessageWrapper>
   );
@@ -47,6 +47,11 @@ const Text = styled.div<{ me: boolean }>`
   }
 
   h3 {
+    font-weight: 600;
+    text-align: ${p => p.me ? "end" : "start"};
+  }
+
+  h6 {
     font-weight: 600;
     text-align: ${p => p.me ? "end" : "start"};
   }
