@@ -40,3 +40,32 @@ export const users: UserType[] = [
     avatar: UserAvatarExampleURL
   },
 ];
+
+
+export type MessagesType = {
+  id: number
+  me?: boolean
+  text: string
+  time: string
+}
+
+export type AllMessagesType = {
+  [userId: number]: MessagesType[]
+}
+
+export const allMessages: AllMessagesType = {
+  1: [
+    {id: 1, me: true, text: 'Hello!', time: '10:00'},
+    {id: 2, text: 'Hi!', time: '10:01'},
+    {id: 3, me: true, text: 'How are you?', time: '10:02'},
+  ],
+  2: [
+    {id: 1, me: true, text: 'Hello Jane Smith!', time: '10:00'},
+    {id: 2, text: 'Hi!', time: '10:01'},
+    {id: 3, me: true, text: 'How are you?', time: '10:02'},
+  ],
+  4: [
+    {id: 1, me: true, text: 'Hello Bob Johnson!', time: '10:00'},
+    {id: 2, text: 'Hi!', time: '10:01'},
+  ]
+}
