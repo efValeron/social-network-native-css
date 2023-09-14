@@ -61,6 +61,7 @@ const NewPostWrapper = styled.div`
   margin-top: 1.5rem;
 
   textarea {
+    font-size: 1.125rem;
     width: 100%;
     padding: .5rem;
     box-sizing: border-box;
